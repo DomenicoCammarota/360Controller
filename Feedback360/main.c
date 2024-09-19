@@ -304,9 +304,9 @@ static HRESULT Feedback360GetForceFeedbackState(void *that,ForceFeedbackDeviceSt
     else deviceState->dwSize=sizeof(ForceFeedbackDeviceState);
     deviceState->dwState
         = Emulate_IsEmpty(&this->emulator)?FFGFFS_EMPTY:0
-        | Emulate_IsStopped(&this->emulator)?FFGFFS_STOPPED:0
-        | Emulate_IsPaused(&this->emulator)?FFGFFS_PAUSED:0
-        | Emulate_IsEnabled(&this->emulator)?FFGFFS_ACTUATORSON:FFGFFS_ACTUATORSOFF;
+    | (Emulate_IsStopped(&this->emulator)?FFGFFS_STOPPED:0
+       | (Emulate_IsPaused(&this->emulator)?FFGFFS_PAUSED:0
+          | (Emulate_IsEnabled(&this->emulator)?FFGFFS_ACTUATORSON:FFGFFS_ACTUATORSOFF)));
     deviceState->dwLoad=(Emulate_Effects_Used(&this->emulator)*100)/Emulate_Effects_Total(&this->emulator);
     return S_OK;
 }
