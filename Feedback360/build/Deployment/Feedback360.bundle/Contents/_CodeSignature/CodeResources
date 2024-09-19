@@ -4,7 +4,7 @@
 <dict>
 	<key>files</key>
 	<dict>
-		<key>Resources/English.lproj/InfoPlist.strings</key>
+		<key>Resources/en.lproj/InfoPlist.strings</key>
 		<dict>
 			<key>hash</key>
 			<data>
@@ -16,7 +16,7 @@
 	</dict>
 	<key>files2</key>
 	<dict>
-		<key>Resources/English.lproj/InfoPlist.strings</key>
+		<key>Resources/en.lproj/InfoPlist.strings</key>
 		<dict>
 			<key>hash2</key>
 			<data>

@@ -51,13 +51,26 @@ static id ReadDriverConfig(NSString *driver)
     infoPlistAttributes = [[[NSFileManager defaultManager] attributesOfItemAtPath:filename error:&error] retain];
     if (infoPlistAttributes == nil)
     {
-        NSLog(@"Warning: Failed to read attributes of '%@': %@",
-              filename, error);
+        NSLog(@"Warning: Failed to read attributes of '%@': %@", filename, error);
     }
+    
     data = [NSData dataWithContentsOfFile:filename];
-    config = [NSPropertyListSerialization propertyListFromData:data mutabilityOption:0 format:NULL errorDescription:NULL];
+    
+    if (data == nil) {
+        NSLog(@"Warning: Failed to read data from '%@'", filename);
+        return nil;
+    }
+    
+    config = [NSPropertyListSerialization propertyListWithData:data options:NSPropertyListMutableContainers format:NULL error:&error];
+    
+    if (error) {
+        NSLog(@"Error: Failed to parse plist from '%@': %@", filename, error);
+        return nil;
+    }
+    
     return config;
 }
+
 
 static void WriteDriverConfig(NSString *driver, id config)
 {
@@ -67,19 +80,20 @@ static void WriteDriverConfig(NSString *driver, id config)
     
     filename = GetDriverConfigPath(driver);
     errorString = nil;
-    data = [NSPropertyListSerialization dataFromPropertyList:config format:NSPropertyListXMLFormat_v1_0 errorDescription:&errorString];
+    
+    NSError *error = nil;
+    data = [NSPropertyListSerialization dataWithPropertyList:config format:NSPropertyListXMLFormat_v1_0 options:0 error:&error];
     if (data == nil)
-        NSLog(@"Error writing config for driver: %@", errorString);
-    [errorString release];
+        NSLog(@"Error writing config for driver: %@", error.localizedDescription);
+    
     if (![data writeToFile:filename atomically:NO])
         NSLog(@"Failed to write file!");
+    
     if (infoPlistAttributes != nil)
     {
-        NSError *error = nil;
         if (![[NSFileManager defaultManager] setAttributes:infoPlistAttributes ofItemAtPath:filename error:&error])
         {
-            NSLog(@"Error setting attributes on '%@': %@",
-                  filename, error);
+            NSLog(@"Error setting attributes on '%@': %@", filename, error.localizedDescription);
         }
     }
 }
