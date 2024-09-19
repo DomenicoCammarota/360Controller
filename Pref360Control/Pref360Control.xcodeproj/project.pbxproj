@@ -356,7 +356,7 @@
 				INSTALL_PATH = "$(HOME)/Library/PreferencePanes";
 				LIBRARY_SEARCH_PATHS = "";
 				LIBRARY_STYLE = Bundle;
-				MACOSX_DEPLOYMENT_TARGET = 10.5;
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
 				OTHER_CFLAGS = "";
 				OTHER_LDFLAGS = (
 					"-bundle",
@@ -451,7 +451,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "Developer ID Application: Colin Munro";
-				MACOSX_DEPLOYMENT_TARGET = 10.5;
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
 				PROVISIONING_PROFILE = "";
 				SDKROOT = "";
 			};
@@ -462,7 +462,7 @@
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
 				CODE_SIGN_IDENTITY = "Developer ID Application: Colin Munro";
-				MACOSX_DEPLOYMENT_TARGET = 10.5;
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
 				PROVISIONING_PROFILE = "";
 				SDKROOT = "";
 			};
@@ -472,7 +472,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "Developer ID Application: Colin Munro";
-				MACOSX_DEPLOYMENT_TARGET = 10.5;
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
 				PROVISIONING_PROFILE = "";
 				SDKROOT = "";
 			};
