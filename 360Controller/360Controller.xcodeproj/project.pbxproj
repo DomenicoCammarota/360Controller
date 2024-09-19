@@ -212,6 +212,7 @@
 /* Begin PBXShellScriptBuildPhase section */
 		3B0F12A1097B3A3A00127827 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
 			buildActionMask = 2147483647;
 			files = (
 			);
@@ -221,7 +222,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "cd \"$TARGET_BUILD_DIR/$TARGET_NAME.kext/Contents\"\nmkdir PlugIns > /dev/null 2>&1\nrm -R PlugIns/Feedback360.plugin > /dev/null 2>&1\necho \"$SRCROOT/../Feedback360/build/Deployment/Feedback360.bundle\"\ncp -R \"$SRCROOT/../Feedback360/build/Deployment/Feedback360.bundle\" PlugIns/Feedback360.plugin\n# Renaming extension from bundle to a plugin? Could be naughty.";
+			shellScript = "cd \"$TARGET_BUILD_DIR/$TARGET_NAME.kext/Contents\"\nmkdir PlugIns > /dev/null 2>&1\nrm -R PlugIns/Feedback360.plugin > /dev/null 2>&1\necho \"$SRCROOT/../Feedback360/build/Deployment/Feedback360.bundle\"\ncp -R \"$SRCROOT/../Feedback360/build/Deployment/Feedback360.bundle\" PlugIns/Feedback360.plugin\n# Renaming extension from bundle to a plugin? Could be naughty.\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
